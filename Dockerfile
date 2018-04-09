@@ -1,8 +1,8 @@
 FROM docker.io/alpine:3.7
 
 ENV \
-  HUGO_VERSION=0.37.1 \
-  HUGO_CHECKSUM=f7b57c4d9e406719e41c84a4a70d6b332826bf356a15615ed02a450134796f81
+  HUGO_VERSION=0.38.1 \
+  HUGO_CHECKSUM=13b6dac57078f658faf6d07eebfb2d801a6a3a8949e3f30818562821f23569ac
 
 RUN set -x \
   && apk add --no-cache ca-certificates wget \
