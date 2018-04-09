@@ -15,3 +15,6 @@ RUN set -x \
   && apk del wget \
   && rm -rf /tmp/* \
   ;
+
+WORKDIR /hugo
+ENTRYPOINT ["hugo"]
