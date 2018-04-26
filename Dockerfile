@@ -16,5 +16,8 @@ RUN set -x \
   && rm -rf /tmp/* \
   ;
 
+RUN set -x \
+  && mkdir -p /hugo \
+  ;
+
 WORKDIR /hugo
-ENTRYPOINT ["hugo"]
