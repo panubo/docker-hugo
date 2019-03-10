@@ -1,12 +1,12 @@
-FROM docker.io/alpine:3.7
+FROM docker.io/alpine:3.9
 
 ENV \
-  HUGO_VERSION=0.53 \
-  HUGO_CHECKSUM=0e4424c90ce5c7a0c0f7ad24a558dd0c2f1500256023f6e3c0004f57a20ee119
+  HUGO_VERSION=0.54.0 \
+  HUGO_CHECKSUM=76f90287c12a682c9137b85146c406be410b2b30b0df7367f02ee7c4142bb416
 
 RUN set -x \
   && APP_NAME=hugo \
-  && apk add --no-cache ca-certificates wget \
+  && apk add --no-cache ca-certificates wget make git myrepos \
   && cd /tmp \
   && wget -nv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${APP_NAME}_${HUGO_VERSION}_Linux-64bit.tar.gz \
   && echo "${HUGO_CHECKSUM}  ${APP_NAME}_${HUGO_VERSION}_Linux-64bit.tar.gz" > /tmp/SHA256SUM \
