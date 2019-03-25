@@ -6,7 +6,7 @@ ENV \
 
 RUN set -x \
   && APP_NAME=hugo \
-  && apk add --no-cache ca-certificates wget make git myrepos \
+  && apk add --no-cache ca-certificates wget make git myrepos openssh-client coreutils \
   && cd /tmp \
   && wget -nv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${APP_NAME}_${HUGO_VERSION}_Linux-64bit.tar.gz \
   && echo "${HUGO_CHECKSUM}  ${APP_NAME}_${HUGO_VERSION}_Linux-64bit.tar.gz" > /tmp/SHA256SUM \
