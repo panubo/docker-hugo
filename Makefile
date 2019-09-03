@@ -1,11 +1,13 @@
-IMAGE    := panubo/hugo
-REGISTRY := docker.io
-VERSION  := $(shell sed -E -e '/HUGO_VERSION[ |=]/!d' -e 's/.*HUGO_VERSION[ |=|v]+([0-9\.]+).*/\1/' Dockerfile)
+NAME       := hugo
+TAG        := $(shell sed -E -e '/HUGO_VERSION[ |=]/!d' -e 's/.*HUGO_VERSION[ |=|v]+([0-9\.]+).*/\1/' Dockerfile)
+IMAGE_NAME := panubo/$(NAME)
 
-.PHONY: build push
+.PHONY: build push clean
 build:
-	docker build -t $(IMAGE):latest .
+	docker build --pull -t $(IMAGE_NAME):$(TAG) .
 
 push:
-	docker tag $(IMAGE):latest $(REGISTRY)/$(IMAGE):$(VERSION)
-	docker push $(REGISTRY)/$(IMAGE):$(VERSION)
+	docker push $(IMAGE_NAME):$(TAG)
+
+clean:
+	docker rmi $(IMAGE_NAME):$(TAG)
