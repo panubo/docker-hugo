@@ -5,9 +5,12 @@ IMAGE_NAME := panubo/$(NAME)
 .PHONY: build push clean
 build:
 	docker build --pull -t $(IMAGE_NAME):$(TAG) .
+	docker build --pull -t $(IMAGE_NAME):$(TAG)-extended -f Dockerfile.extended .
 
 push:
 	docker push $(IMAGE_NAME):$(TAG)
+	docker push $(IMAGE_NAME):$(TAG)-extended
 
 clean:
-	docker rmi $(IMAGE_NAME):$(TAG)
+	docker rmi $(IMAGE_NAME):$(TAG) || true
+	docker rmi $(IMAGE_NAME):$(TAG)-extended || true

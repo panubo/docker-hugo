@@ -1,0 +1,28 @@
+# Hugo Extended Version needs glibc, therefore use Debian base.
+
+FROM docker.io/debian:10
+
+ENV \
+  HUGO_VERSION=0.70.0 \
+  HUGO_CHECKSUM=494fdb1c95675f9477d0279343a067a17b340a7d3c104f285bd745790e3bfc72
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+  && set -x \
+  && APP_NAME=hugo_extended \
+  && apt-get update \
+  && apt-get -y install ca-certificates bash wget make git myrepos openssh-client coreutils \
+  && cd /tmp \
+  && wget -nv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${APP_NAME}_${HUGO_VERSION}_Linux-64bit.tar.gz \
+  && echo "${HUGO_CHECKSUM}  ${APP_NAME}_${HUGO_VERSION}_Linux-64bit.tar.gz" > /tmp/SHA256SUM \
+  && sha256sum -c SHA256SUM \
+  && tar -zxf ${APP_NAME}_${HUGO_VERSION}_Linux-64bit.tar.gz \
+  && mv hugo /usr/local/bin/hugo \
+  && apt-get -y remove wget \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  ;
+
+RUN set -x \
+  && mkdir -p /hugo \
+  ;
+
+WORKDIR /hugo
