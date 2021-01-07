@@ -3,13 +3,13 @@
 FROM docker.io/debian:10
 
 ENV \
-  HUGO_VERSION=0.75.1 \
-  HUGO_CHECKSUM=261fbc6b2bb835192761b9d9bf726c6dea89f8c71b15b6af63e3a8a574c8d4c5
+  HUGO_VERSION=0.80.0 \
+  HUGO_CHECKSUM=8405248a7234af657979a209d6778afaabd9b40857b7274649ee952ce2937bed
 
 RUN export DEBIAN_FRONTEND=noninteractive \
   && set -x \
   && apt-get update \
-  && apt-get -y install ca-certificates bash wget make git myrepos openssh-client coreutils \
+  && apt-get -y install ca-certificates bash wget make git myrepos openssh-client coreutils rsync \
   && cd /tmp \
   && wget -nv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz \
   && echo "${HUGO_CHECKSUM}  hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz" > /tmp/SHA256SUM \
