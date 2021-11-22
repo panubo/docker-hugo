@@ -1,11 +1,11 @@
-FROM docker.io/alpine:3.12
+FROM docker.io/alpine:3.14
 
 ENV \
-  HUGO_VERSION=0.80.0 \
-  HUGO_CHECKSUM=b3a259bbe633e2f9182f8ecfc1b5cee6a7cfc4c970defe5f29c9959f2ef3259b
+  HUGO_VERSION=0.89.4 \
+  HUGO_CHECKSUM=88bcff016b16974909615bafc6e89a95f44999576034893e32ef1f1a2124af46
 
 RUN set -x \
-  && apk add --no-cache ca-certificates bash wget make git myrepos openssh-client coreutils rsync \
+  && apk add --no-cache ca-certificates bash wget make git myrepos openssh-client coreutils rsync py3-docutils \
   && cd /tmp \
   && wget -nv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz \
   && echo "${HUGO_CHECKSUM}  hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" > /tmp/SHA256SUM \

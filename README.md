@@ -7,3 +7,5 @@ for use in build systems and not for hosting a Hugo site beyond development.
 
 There are two versions, the basic and the extended SASS and SCSS version. The
 latter is tagged with `<version>-extended`.
+
+Both images include RestructuredText support.
