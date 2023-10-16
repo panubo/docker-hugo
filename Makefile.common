@@ -1,0 +1,9 @@
+VERSION := $(shell sed -E -e '/HUGO_VERSION[ |=]/!d' -e 's/.*HUGO_VERSION[ |=|v]+([0-9\.]+).*/\1/' Dockerfile)
+SUFFIX := $(shell basename $(PWD) | sed -E -e 's/(.*)/-\1/' -e 's/-standard//')
+
+_ci_test:
+	true
+
+_ci_version:
+	@echo $(VERSION)$(SUFFIX)
+    
