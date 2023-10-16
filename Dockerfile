@@ -1,8 +1,8 @@
-FROM docker.io/alpine:3.14
+FROM docker.io/alpine:3.18
 
 ENV \
-  HUGO_VERSION=0.89.4 \
-  HUGO_CHECKSUM=88bcff016b16974909615bafc6e89a95f44999576034893e32ef1f1a2124af46
+  HUGO_VERSION=0.119.0 \
+  HUGO_CHECKSUM=c94f12d589a0b3c8955cf5107ccc6e9e89ab5a901fb5eb1de1c889da844b737f
 
 RUN set -x \
   && apk add --no-cache ca-certificates bash wget make git myrepos openssh-client coreutils rsync py3-docutils \
